@@ -180,6 +180,90 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://LucasMaii.github.io/2020/01/20/ArrayList%E9%A1%BA%E5%BA%8F%E8%A1%A8%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="LucasMaii">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LucasMaii">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/20/ArrayList%E9%A1%BA%E5%BA%8F%E8%A1%A8%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">ArrayList动态数组实现</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-20 22:41:03" itemprop="dateCreated datePublished" datetime="2020-01-20T22:41:03+08:00">2020-01-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-21 00:08:20" itemprop="dateModified" datetime="2020-01-21T00:08:20+08:00">2020-01-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="基本需要实现的功能"><a href="#基本需要实现的功能" class="headerlink" title="基本需要实现的功能"></a>基本需要实现的功能</h2><p>MyArrayList.java</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int size(); // 元素的数量  </span><br><span class="line">boolean isEmpty(); // 是否为空  </span><br><span class="line">boolean contains(E element); // 是否包含某个元素  </span><br><span class="line">void add(E element); // 添加元素到最后面  </span><br><span class="line">E get(int index); // 返回index位置对应的元素 </span><br><span class="line">E <span class="built_in">set</span>(int index, E element); // 设置index位置的元素  </span><br><span class="line">void add(int index, E element); // 往index位置添加元素 </span><br><span class="line">E remove(int index); // 删除index位置对应的元素 </span><br><span class="line">int indexOf(E element); // 查看元素的位置 </span><br><span class="line">void clear(); // 清除所有元素</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/01/20/ArrayList%E9%A1%BA%E5%BA%8F%E8%A1%A8%E5%AE%9E%E7%8E%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://LucasMaii.github.io/2020/01/20/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%AC%ACN%E9%A1%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -205,7 +289,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-01-20 10:18:28 / 修改时间：10:37:18" itemprop="dateCreated datePublished" datetime="2020-01-20T10:18:28+08:00">2020-01-20</time>
+              <time title="创建时间：2020-01-20 10:18:28 / 修改时间：10:42:07" itemprop="dateCreated datePublished" datetime="2020-01-20T10:18:28+08:00">2020-01-20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -233,16 +317,14 @@
           <h2 id="斐波那契数列简介"><a href="#斐波那契数列简介" class="headerlink" title="斐波那契数列简介"></a>斐波那契数列简介</h2><p>斐波那契数列（Fibonacci sequence），又称黄金分割数列、因数学家列昂纳多·斐波那契（Leonardoda Fibonacci）以兔子繁殖为例子而引入，故又称为“兔子数列”，指的是这样一个数列：1、1、2、3、5、8、13、21、34、……在数学上，斐波那契数列以如下被以递推的方法定义：F(1)=1，F(2)=1, F(n)=F(n-1)+F(n-2)(n>=3，n∈N*)</p>
 
 <h2 id="递归求法-不推荐，复杂度约为2-n"><a href="#递归求法-不推荐，复杂度约为2-n" class="headerlink" title="递归求法(不推荐，复杂度约为2^n)"></a>递归求法(不推荐，复杂度约为2^n)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static int fib1(int n) &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(n &lt;= 1) <span class="built_in">return</span> n;</span><br><span class="line">	</span><br><span class="line">    <span class="built_in">return</span> fib1(n-1)+fib1(n-2);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="使用For循环"><a href="#使用For循环" class="headerlink" title="使用For循环"></a>使用For循环</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public static int fib2(int n) &#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(n &lt;= 2) <span class="built_in">return</span> 1;</span><br><span class="line">		</span><br><span class="line">		int first = 1;</span><br><span class="line">		int second = 1;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(int i = 1; i &lt; n - 1; i++) &#123;</span><br><span class="line"></span><br><span class="line">			second = first + second;</span><br><span class="line">			first = second - first;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">return</span> second;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用公式求解"><a href="#使用公式求解" class="headerlink" title="使用公式求解"></a>使用公式求解</h2><img src="https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/pic/item/503d269759ee3d6db9e6f1e046166d224f4adefd.jpg">
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static int fib3(int n) &#123;</span><br><span class="line">		double c = Math.sqrt(5);</span><br><span class="line">		<span class="built_in">return</span> (int)((Math.pow((1+c)/2,n) - Math.pow((1-c)/2, n))/c);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="测试运行时间"><a href="#测试运行时间" class="headerlink" title="测试运行时间"></a>测试运行时间</h2><img src="/images/fib/fib1.png">
-<img src="/images/fib/fib2.png">
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/01/20/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%AC%ACN%E9%A1%B9/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -376,7 +458,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-15 12:45:14" itemprop="dateModified" datetime="2020-01-15T12:45:14+08:00">2020-01-15</time>
+                <time title="修改时间：2020-01-21 00:08:22" itemprop="dateModified" datetime="2020-01-21T00:08:22+08:00">2020-01-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -407,7 +489,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="LucasMaii第一篇文章鸭"><a href="#LucasMaii第一篇文章鸭" class="headerlink" title="LucasMaii第一篇文章鸭"></a>LucasMaii第一篇文章鸭</h2><p>学了几天，终于搭建出属于自己的博客，尽管用的是网络上流行的Next主题模板，但是没有广告我就很开心，也许这就是学习前端的乐趣吧！你们要不要也试试搭建属于自己的网站，我是使用Github+Hexo来搭建的，下面是我这次搭建博客的笔记（还没写完）。。。。。。</p>
+          <h2 id="LucasMaii第一篇文章鸭"><a href="#LucasMaii第一篇文章鸭" class="headerlink" title="LucasMaii第一篇文章鸭"></a>LucasMaii第一篇文章鸭</h2><p>学了几天，终于搭建出属于自己的博客，尽管用的是网络上流行的Next主题模板，但是没有广告我就很开心，也许这就是学习前端的乐趣吧！你们要不要也试试搭建属于自己的网站，我是使用Github+Hexo来搭建的，下面是我这次搭建博客的笔记。</p>
 <h2 id="如何搭建自己的博客"><a href="#如何搭建自己的博客" class="headerlink" title="如何搭建自己的博客"></a>如何搭建自己的博客</h2><h3 id="1-下载Node-js"><a href="#1-下载Node-js" class="headerlink" title="1.    下载Node.js"></a>1.    下载Node.js</h3><p>下载网站<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
 <img src="/images/1/node.png" class="full-image" />
           <!--noindex-->
@@ -550,7 +632,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -602,7 +684,14 @@
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
   </div>-->
 
+<span id="busuanzi_container_site_uv">
+  本站访问次数：<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+</span>
+
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
 
 
 

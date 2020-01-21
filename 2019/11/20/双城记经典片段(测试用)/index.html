@@ -38,7 +38,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":false,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -51,7 +51,7 @@
 </script>
 
   <meta name="description" content="经典欣赏It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Ligh">
-<meta name="keywords" content="分享,导航">
+<meta name="keywords" content="导航,分享">
 <meta property="og:type" content="article">
 <meta property="og:title" content="双城记经典片段(测试用)">
 <meta property="og:url" content="https:&#x2F;&#x2F;lucasmaii.github.io&#x2F;2019&#x2F;11&#x2F;20&#x2F;%E5%8F%8C%E5%9F%8E%E8%AE%B0%E7%BB%8F%E5%85%B8%E7%89%87%E6%AE%B5(%E6%B5%8B%E8%AF%95%E7%94%A8)&#x2F;index.html">
@@ -158,34 +158,9 @@
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
   </ul>
 
 </nav>
-  <div class="site-search">
-    <div class="popup search-popup">
-    <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
-           placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result"></div>
-
-</div>
-<div class="search-pop-overlay"></div>
-
-  </div>
 </div>
     </header>
 
@@ -288,8 +263,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%88%86%E4%BA%AB/" rel="tag"># 分享</a>
               <a href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag"># 导航</a>
+              <a href="/tags/%E5%88%86%E4%BA%AB/" rel="tag"># 分享</a>
           </div>
 
         
@@ -455,8 +430,6 @@
 
 
 
-
-  <script src="/js/local-search.js"></script>
 
 
 

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>ArrayList动态数组实现</title>
+    <url>/2020/01/20/ArrayList%E9%A1%BA%E5%BA%8F%E8%A1%A8%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<h2 id="基本需要实现的功能"><a href="#基本需要实现的功能" class="headerlink" title="基本需要实现的功能"></a>基本需要实现的功能</h2><p>MyArrayList.java</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int size(); // 元素的数量  </span><br><span class="line">boolean isEmpty(); // 是否为空  </span><br><span class="line">boolean contains(E element); // 是否包含某个元素  </span><br><span class="line">void add(E element); // 添加元素到最后面  </span><br><span class="line">E get(int index); // 返回index位置对应的元素 </span><br><span class="line">E <span class="built_in">set</span>(int index, E element); // 设置index位置的元素  </span><br><span class="line">void add(int index, E element); // 往index位置添加元素 </span><br><span class="line">E remove(int index); // 删除index位置对应的元素 </span><br><span class="line">int indexOf(E element); // 查看元素的位置 </span><br><span class="line">void clear(); // 清除所有元素</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<h3 id="我的具体实现方法"><a href="#我的具体实现方法" class="headerlink" title="我的具体实现方法"></a>我的具体实现方法</h3><h4 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h4><p>基本需要用到的变量有数组的长度(size),数组(elements[i]),DEFAULT_CAPACITY表示申请时默认分配给数组10个存储空间,ELEMENT_NOT_FOUND表示找不到元素时返回的值。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">private int size;</span><br><span class="line">private E[] elements;</span><br><span class="line"></span><br><span class="line">private static final int DEFAULT_CAPACITY = 10;</span><br><span class="line">private static final int ELEMENT_NOT_FOUND = -1;</span><br></pre></td></tr></table></figure>
+<h4 id="Java中常见的泛型"><a href="#Java中常见的泛型" class="headerlink" title="Java中常见的泛型"></a>Java中常见的泛型</h4><p>这里说明一下，定义数组时使用E[] elements ,E时java中的泛型,使用泛型可以使该动态数组存放各种类型的元素，十分实用。</p>
+<p>E - Element (在集合中使用，因为集合中存放的是元素)<br>T - Type（Java 类）<br>K - Key（键）<br>V - Value（值）<br>N - Number（数值类型）<br>？ -  表示不确定的java类型</p>
+<h4 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h4><p>这里采用的方式时：若用户申请的容量小于默认的数组大小(10)时，统一按照默认大小new一个数组。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public MyArrayList(int capaticy) &#123;</span><br><span class="line">		capaticy = (capaticy &lt; DEFAULT_CAPACITY) ? DEFAULT_CAPACITY : capaticy;</span><br><span class="line">		elements = (E[])new Object[capaticy];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">public <span class="function"><span class="title">MyArrayList</span></span>() &#123;</span><br><span class="line">	</span><br><span class="line">	this(DEFAULT_CAPACITY);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="动态数组中基本方法实现"><a href="#动态数组中基本方法实现" class="headerlink" title="动态数组中基本方法实现"></a>动态数组中基本方法实现</h4><p>返回动态数组的size</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 元素的数量</span><br><span class="line"> */</span><br><span class="line">public int <span class="function"><span class="title">size</span></span>() &#123;</span><br><span class="line">	<span class="built_in">return</span> size;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>判断size == 0是否为真</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 是否为空</span><br><span class="line"> */</span><br><span class="line">public boolean <span class="function"><span class="title">isEmpty</span></span>() &#123;</span><br><span class="line">	<span class="built_in">return</span> size == 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>改写toString()方法实现数组的打印功能</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@Override</span><br><span class="line">public String <span class="function"><span class="title">toString</span></span>() &#123;</span><br><span class="line">	</span><br><span class="line">	StringBuilder string = new StringBuilder();</span><br><span class="line">	string.append(<span class="string">"size="</span>).append(size).append(<span class="string">", ["</span>);</span><br><span class="line">	<span class="keyword">for</span>(int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(i != 0) &#123;</span><br><span class="line">			string.append(<span class="string">", "</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		string.append(elements[i]);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	string.append(<span class="string">"]"</span>);</span><br><span class="line">	<span class="built_in">return</span> string.toString();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一些补充功能，检测用户数组索引是否越界</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">private void outOfBounds(int index) &#123;</span><br><span class="line">	throw new IndexOutOfBoundsException(<span class="string">"Index:"</span>+index+<span class="string">",Size:"</span>+size);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void rangeCheck(int index) &#123;</span><br><span class="line">	<span class="keyword">if</span>(index &lt; 0 || index &gt;= size) &#123;</span><br><span class="line">		outOfBounds(index);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void rangeCheckForAdd(int index) &#123;</span><br><span class="line">	<span class="keyword">if</span>(index &lt; 0 || index &gt; size) &#123;</span><br><span class="line">		outOfBounds(index);		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="动态数组的增删改查实现"><a href="#动态数组的增删改查实现" class="headerlink" title="动态数组的增删改查实现"></a>动态数组的增删改查实现</h4><p>增加元素</p>
+<p>增加元素时，判断数组空间是否足够，确保数组容量不小于size+1，若数组容量不足，则重新申请一个容量为原来容量1.5倍的数组(java中的源代码也是设置了1.5倍，貌似ios是1.6倍)，由于浮点数运算较复杂，故采用newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);的运算方式,并将原来数组的元素复制到新数组,并将原数组的地址指向新数组elements = newElements,由于java有垃圾回收机制,原来数组所占的内存会被释放掉。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 添加元素到最后面</span><br><span class="line"> */</span><br><span class="line">public void add(E element) &#123;</span><br><span class="line">	add(size,element);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * 往index位置添加元素</span><br><span class="line"> */</span><br><span class="line">public void add(int index,E element) &#123;</span><br><span class="line">	rangeCheckForAdd(index);</span><br><span class="line">	</span><br><span class="line">	ensureCapacity(size + 1);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (int i = size; i &gt; index; i--) &#123;</span><br><span class="line">		elements[i] = elements[i - 1];</span><br><span class="line">	&#125;</span><br><span class="line">	elements[index] = element;</span><br><span class="line">	size++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void ensureCapacity(int capacity) &#123;</span><br><span class="line">	int oldCapacity = elements.length;</span><br><span class="line">	<span class="keyword">if</span>(oldCapacity &gt;= capacity) <span class="built_in">return</span>;</span><br><span class="line">	</span><br><span class="line">	//新容量为1.5倍</span><br><span class="line">	int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);</span><br><span class="line">	E[] newElements = (E[]) new Object[newCapacity];</span><br><span class="line">	<span class="keyword">for</span>(int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">		newElements[i] = elements[i];</span><br><span class="line">	&#125;</span><br><span class="line">	elements = newElements;</span><br><span class="line">	</span><br><span class="line">	//System.out.println(oldCapacity+<span class="string">"扩容为："</span>+newCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>删除元素</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 删除index位置对应的元素</span><br><span class="line"> */</span><br><span class="line">public E remove(int index) &#123;</span><br><span class="line">	rangeCheck(index);</span><br><span class="line"></span><br><span class="line">	E old = elements[index];</span><br><span class="line">	<span class="keyword">for</span>(int i = index; i &lt; size; i++) &#123;</span><br><span class="line">		elements[i] = elements[i+1];</span><br><span class="line">	&#125;</span><br><span class="line">	size --;</span><br><span class="line">	</span><br><span class="line">	elements[size] = null;</span><br><span class="line">	<span class="built_in">return</span> old;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * 清除所有元素</span><br><span class="line"> */</span><br><span class="line">public void <span class="function"><span class="title">clear</span></span>() &#123;</span><br><span class="line">	<span class="keyword">for</span> (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">		elements[i] = null;</span><br><span class="line">	&#125;</span><br><span class="line">	size = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改元素</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 设置index位置的元素</span><br><span class="line"> */</span><br><span class="line">public E <span class="built_in">set</span>(int index, E element) &#123;</span><br><span class="line">	rangeCheck(index);</span><br><span class="line">	</span><br><span class="line">	E old = elements[index];</span><br><span class="line">	elements[index] = element;</span><br><span class="line">	<span class="built_in">return</span> old;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>查找元素</p>
+<p>注意比较元素是否相同时应使用equals()方法。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 是否包含某个元素</span><br><span class="line"> */</span><br><span class="line">public boolean contains (E element) &#123;</span><br><span class="line">	<span class="built_in">return</span> indexOf(element) != ELEMENT_NOT_FOUND;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * 返回index位置对应的元素</span><br><span class="line"> */</span><br><span class="line">public E get(int index) &#123;</span><br><span class="line">	</span><br><span class="line">	rangeCheck(index);</span><br><span class="line">	<span class="built_in">return</span> elements[index];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * 查看元素的位置</span><br><span class="line"> */</span><br><span class="line">public int indexOf(E element) &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span> (element == null) &#123;  // 1</span><br><span class="line">		<span class="keyword">for</span> (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (elements[i] == null) <span class="built_in">return</span> i; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">for</span> (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (element.equals(elements[i])) <span class="built_in">return</span> i; // n</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> ELEMENT_NOT_FOUND;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>分享</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>斐波那契数列第N项</title>
+    <url>/2020/01/20/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%AC%ACN%E9%A1%B9/</url>
+    <content><![CDATA[<h2 id="斐波那契数列简介"><a href="#斐波那契数列简介" class="headerlink" title="斐波那契数列简介"></a>斐波那契数列简介</h2><p>斐波那契数列（Fibonacci sequence），又称黄金分割数列、因数学家列昂纳多·斐波那契（Leonardoda Fibonacci）以兔子繁殖为例子而引入，故又称为“兔子数列”，指的是这样一个数列：1、1、2、3、5、8、13、21、34、……在数学上，斐波那契数列以如下被以递推的方法定义：F(1)=1，F(2)=1, F(n)=F(n-1)+F(n-2)(n>=3，n∈N*)</p>
+
+<h2 id="递归求法-不推荐，复杂度约为2-n"><a href="#递归求法-不推荐，复杂度约为2-n" class="headerlink" title="递归求法(不推荐，复杂度约为2^n)"></a>递归求法(不推荐，复杂度约为2^n)</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public static int fib1(int n) &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(n &lt;= 1) <span class="built_in">return</span> n;</span><br><span class="line">	</span><br><span class="line">    <span class="built_in">return</span> fib1(n-1)+fib1(n-2);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<h2 id="使用For循环"><a href="#使用For循环" class="headerlink" title="使用For循环"></a>使用For循环</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public static int fib2(int n) &#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(n &lt;= 2) <span class="built_in">return</span> 1;</span><br><span class="line">		</span><br><span class="line">		int first = 1;</span><br><span class="line">		int second = 1;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(int i = 1; i &lt; n - 1; i++) &#123;</span><br><span class="line"></span><br><span class="line">			second = first + second;</span><br><span class="line">			first = second - first;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">return</span> second;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用公式求解"><a href="#使用公式求解" class="headerlink" title="使用公式求解"></a>使用公式求解</h2><img src="https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/pic/item/503d269759ee3d6db9e6f1e046166d224f4adefd.jpg">
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public static int fib3(int n) &#123;</span><br><span class="line">		double c = Math.sqrt(5);</span><br><span class="line">		<span class="built_in">return</span> (int)((Math.pow((1+c)/2,n) - Math.pow((1-c)/2, n))/c);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试运行时间"><a href="#测试运行时间" class="headerlink" title="测试运行时间"></a>测试运行时间</h2><img src="/images/fib/fib1.jpg">
+<img src="/images/fib/fib2.jpg">
+
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>分享</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>双城记经典片段(测试用)</title>
+    <url>/2019/11/20/%E5%8F%8C%E5%9F%8E%E8%AE%B0%E7%BB%8F%E5%85%B8%E7%89%87%E6%AE%B5(%E6%B5%8B%E8%AF%95%E7%94%A8)/</url>
+    <content><![CDATA[<h2 id="经典欣赏"><a href="#经典欣赏" class="headerlink" title="经典欣赏"></a>经典欣赏</h2><p style="text-indent: 2em" >It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way--in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only.</p>  
+<p align="right">—— A Tale of Two Cities Charles Dickens</p> 
+<a id="more"></a>
+## 优秀译文
+
+<h3 id="中国对外翻译（宋兆霖-译文）"><a href="#中国对外翻译（宋兆霖-译文）" class="headerlink" title="中国对外翻译（宋兆霖 译文）"></a>中国对外翻译（宋兆霖 译文）</h3><p style="text-indent: 2em"> 那是最美好的时代，那是最糟糕的时代；那是个睿智的年月，那是个蒙昧的年月；那是信心百倍的时期，那是疑虑重重的时期；那是阳光普照的季节，那是黑暗笼罩的季节；那是充满希望的春天，那是让人绝望的冬天；我们面前无所不有，我们面前一无所有；我们大家都在直升天堂，我们大家都在直下地狱——简而言之，那个时代和当今这个时代是如此相似，因而一些吵嚷不休的权威们也坚持认为，不管它是好是坏，都只能用“ 最„„”来评价它。</p>
+
+<h3 id="人民文学（石永礼、赵文娟-译文）"><a href="#人民文学（石永礼、赵文娟-译文）" class="headerlink" title="人民文学（石永礼、赵文娟 译文）"></a>人民文学（石永礼、赵文娟 译文）</h3><p style="text-indent: 2em">那是最好的年月，那是最坏的年月，那是智慧的时代，那是愚蠢的时代，那是信仰的新纪元，那是怀疑的新纪元，那是光明的季节，那是黑暗的季节，那是希望的春天，那是绝望的冬天，我们将拥有一切，我们将一无所有，我们直接上天堂，我们直接下地狱——简言之，那个时代跟现代十分相似，甚至当年有些大发议论的权威人士都坚持认为，无论说那一时代好也罢，坏也罢，只有用最高比较级，才能接受。</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>分享</tag>
+        <tag>导航</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>纪念博客搭建成功</title>
+    <url>/2019/11/19/%E7%BA%AA%E5%BF%B5%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%88%90%E5%8A%9F2019-11-19/</url>
+    <content><![CDATA[<h2 id="LucasMaii第一篇文章鸭"><a href="#LucasMaii第一篇文章鸭" class="headerlink" title="LucasMaii第一篇文章鸭"></a>LucasMaii第一篇文章鸭</h2><p>学了几天，终于搭建出属于自己的博客，尽管用的是网络上流行的Next主题模板，但是没有广告我就很开心，也许这就是学习前端的乐趣吧！你们要不要也试试搭建属于自己的网站，我是使用Github+Hexo来搭建的，下面是我这次搭建博客的笔记。</p>
+<h2 id="如何搭建自己的博客"><a href="#如何搭建自己的博客" class="headerlink" title="如何搭建自己的博客"></a>如何搭建自己的博客</h2><h3 id="1-下载Node-js"><a href="#1-下载Node-js" class="headerlink" title="1.    下载Node.js"></a>1.    下载Node.js</h3><p>下载网站<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
+<img src="/images/1/node.png" class="full-image" />
+<a id="more"></a>
+打开cmd输入node -v查看版本号
+
+<img src="/images/1/checknode.png" class="full-image" />
+
+
+<p>显示版本号表示安装成功！！！</p>
+<h3 id="2-注册Github"><a href="#2-注册Github" class="headerlink" title="2.    注册Github"></a>2.    注册Github</h3><p>这个不会就别学了(滑稽)<br><img src="/images/1/github.png"></p>
+<h3 id="3-下载Git-For-Win"><a href="#3-下载Git-For-Win" class="headerlink" title="3.    下载Git For Win"></a>3.    下载Git For Win</h3><p>怎么下载，怎么安装百度上非常的详细！！！<br>安装完就可以使用Git里面的命令啦！</p>
+<img src="/images/1/gitforwin.png" class="" />
+
+<h3 id="4-配置GithubSHH"><a href="#4-配置GithubSHH" class="headerlink" title="4.    配置GithubSHH"></a>4.    配置GithubSHH</h3><p>命令ssh-keygen -t rsa -C “你注册的邮箱”<br><img src="/images/1/gitssh.png"><br>之后一直按enter键，表示不设置密码</p>
+<p>用记事本打开ssh密钥id_rsa.pub,将密钥复制到GitHub上Settings –&gt;&gt; SSH and GPG keys 中的SSH框框内<br><img src="/images/1/ssh_pw.png" class="full-image" ><br><img src="/images/1/sshkey.png" class="full-image" ></p>
+<h3 id="5-安装hexo"><a href="#5-安装hexo" class="headerlink" title="5.    安装hexo"></a>5.    安装hexo</h3><img src="/images/1/installhexo.png">
+这是官网上给的命令
+<img src="/images/1/hexo.png">
+打开cmd命令行，输入上图指令进行hexo安装操作，
+安装成功后，输入hexo – v查看版本号检验是否安装成功。
+<br/>
+找一个位置创建你的Blog文件夹，然后从cmd命令行进入文件夹
+<img src="/images/1/cdblog.png">
+或者直接鼠标右键，Git Bash Here
+<br/>
+ 接下来进行博客初始化操作
+ hexo init +”自己命名博客文件夹”
+<img src="/images/1/hexoinit.png">
+初始化成功！此时发现blog目录下已经下载好相应的博客初始文件。
+<img src="/images/1/blogcategories.png">
+Cd MyBlog进入博客目录，使用命令npm install 安装相关支持
+接下来就是最后一条指令啦！
+Hexo server
+<img src="/images/1/hexoserver.png">
+运行后，你的博客网站将运行到本地服务器上面，打开浏览器输入以上图片中的地址 http://localhost:4000 即可进入自己的博客网站(注意看端口号：如图中4000)
+<img src="/images/1/hexoindex.png">
+如果你不想用这个4000端口，例如可以使用命令hexo s -p 5555亦可
+<img src="/images/1/5555.png">
+
+<h3 id="6-安装sublime-vscode软件便于查看代码"><a href="#6-安装sublime-vscode软件便于查看代码" class="headerlink" title="6.    安装sublime/vscode软件便于查看代码"></a>6.    安装sublime/vscode软件便于查看代码</h3><p>这个小伙伴们自己按照自己喜欢的编辑器选择，我这里选用sublime Text作为例子。<br>用sublime打开你的博客文件夹，并打开配置文件_config.yml<br><img src="/images/1/sublime.png"><br>修改如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Hexo Configuration</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/configuration.html</span></span><br><span class="line"><span class="comment">## Source: https://github.com/hexojs/hexo/</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Site</span></span><br><span class="line">title: 此处修改为你网站状态栏上显示的名称</span><br><span class="line">subtitle: <span class="string">''</span></span><br><span class="line">description: <span class="string">''</span></span><br><span class="line">keywords:</span><br><span class="line">author: 作者名称</span><br><span class="line">language: 网站语言，设置为中文填 zh-CN</span><br><span class="line">timezone: <span class="string">''</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line">url: 此处填你的博客网址，与你的GitHub账号同名，如我的博客网址是https://LucasMaii.github.io </span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br><span class="line">pretty_urls:</span><br><span class="line">  trailing_index: <span class="literal">true</span> <span class="comment"># Set to false to remove trailing index.html from permalinks</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Directory</span></span><br><span class="line">source_dir: <span class="built_in">source</span></span><br><span class="line">public_dir: public</span><br><span class="line">tag_dir: tags</span><br><span class="line">archive_dir: archives</span><br><span class="line">category_dir: categories</span><br><span class="line">code_dir: downloads/code</span><br><span class="line">i18n_dir: :lang</span><br><span class="line">skip_render:</span><br><span class="line"></span><br><span class="line"><span class="comment"># Writing</span></span><br><span class="line">new_post_name: :title.md <span class="comment"># File name of new posts</span></span><br><span class="line">default_layout: post</span><br><span class="line">titlecase: <span class="literal">false</span> <span class="comment"># Transform title into titlecase</span></span><br><span class="line">external_link:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span> <span class="comment"># Open external links in new tab</span></span><br><span class="line">  field: site <span class="comment"># Apply to the whole site</span></span><br><span class="line">  exclude: <span class="string">''</span></span><br><span class="line">filename_case: 0</span><br><span class="line">render_drafts: <span class="literal">false</span></span><br><span class="line">post_asset_folder: <span class="literal">false</span></span><br><span class="line">relative_link: <span class="literal">false</span></span><br><span class="line">future: <span class="literal">true</span></span><br><span class="line">highlight:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  line_number: <span class="literal">true</span></span><br><span class="line">  auto_detect: <span class="literal">false</span></span><br><span class="line">  tab_replace: <span class="string">''</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Home page setting</span></span><br><span class="line"><span class="comment"># path: Root path for your blogs index page. (default = '')</span></span><br><span class="line"><span class="comment"># per_page: Posts displayed per page. (0 = disable pagination)</span></span><br><span class="line"><span class="comment"># order_by: Posts order. (Order by date descending by default)</span></span><br><span class="line">index_generator:</span><br><span class="line">  path: <span class="string">''</span></span><br><span class="line">  per_page: 10</span><br><span class="line">  order_by: -date</span><br><span class="line"></span><br><span class="line"><span class="comment"># Category &amp; Tag</span></span><br><span class="line">default_category: uncategorized</span><br><span class="line">category_map:</span><br><span class="line">tag_map:</span><br><span class="line"></span><br><span class="line"><span class="comment"># Metadata elements</span></span><br><span class="line"><span class="comment">## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta</span></span><br><span class="line">meta_generator: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Date / Time format</span></span><br><span class="line"><span class="comment">## Hexo uses Moment.js to parse and display date</span></span><br><span class="line"><span class="comment">## You can customize the date format as defined in</span></span><br><span class="line"><span class="comment">## http://momentjs.com/docs/#/displaying/format/</span></span><br><span class="line">date_format: YYYY-MM-DD</span><br><span class="line">time_format: HH:mm:ss</span><br><span class="line"><span class="comment">## Use post's date for updated date unless set in front-matter</span></span><br><span class="line">use_date_for_updated: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Pagination</span></span><br><span class="line"><span class="comment">## Set per_page to 0 to disable pagination</span></span><br><span class="line">per_page: 10</span><br><span class="line">pagination_dir: page</span><br><span class="line"></span><br><span class="line"><span class="comment"># Include / Exclude file(s)</span></span><br><span class="line"><span class="comment">## include:/exclude: options only apply to the 'source/' folder</span></span><br><span class="line">include:</span><br><span class="line">exclude:</span><br><span class="line">ignore:</span><br><span class="line"></span><br><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line">theme: landscape 这里就是更换主题的地方了，例如我使用的是next主题，小伙伴们可以自己摸索</span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: 这里填git</span><br><span class="line">这里补充</span><br><span class="line">  repo：你在github上存放博客的仓库的地址，比如我的是https://github.com/LucasMaii/LucasMaii.github.io.git </span><br><span class="line">  branch:master</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-发布Hexo到GitHub"><a href="#7-发布Hexo到GitHub" class="headerlink" title="7.    发布Hexo到GitHub"></a>7.    发布Hexo到GitHub</h3><p>上一部部署工作做好后，接下来打开命令行，进入MyBlog目录，使用Hexo g + Hexo d 命令将博客发布到网络上，并尝试用网址登录。<br><img src="/images/1/hexog.png"><br><img src="/images/1/hexod.png"><br>这是我的博客地址<a href="https://lucasmaii.github.io/">https://lucasmaii.github.io/</a><br>输入网址就能进入自己的网站，是不是很开心呢！<br><img src="/images/1/memoryhexo.png"></p>
+<h3 id="8-以hexo的next主题为例使用"><a href="#8-以hexo的next主题为例使用" class="headerlink" title="8.    以hexo的next主题为例使用"></a>8.    以hexo的next主题为例使用</h3><p>我们只需要在hexo上搜索喜欢的主题，把主题包下载好，放到博客的themes目录下，可以改个名字方便设置。<br><img src="/images/1/hexotheme.png"><br>例如我改成next，在配置文件中将theme：landscape 改成 next就可以切换到next主题啦。</p>
+<p>修改代码</p>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+<p>这个教程就告一段落啦，至于如何写博客，如何设置动画，添加标签等留给你们自行摸索了，也希望你们感受到这其中的乐趣。</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>分享</tag>
+        <tag>导航</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2019/11/19/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/hello-world/</url>
+    <content><![CDATA[<!-- Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues). -->
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+</search>

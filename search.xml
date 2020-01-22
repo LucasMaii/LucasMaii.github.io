@@ -86,8 +86,8 @@
         <category>生活</category>
       </categories>
       <tags>
-        <tag>导航</tag>
         <tag>分享</tag>
+        <tag>导航</tag>
       </tags>
   </entry>
   <entry>
@@ -144,12 +144,11 @@ Hexo server
 <p>这个教程就告一段落啦，至于如何写博客，如何设置动画，添加标签等留给你们自行摸索了，也希望你们感受到这其中的乐趣。</p>
 ]]></content>
       <categories>
-        <category>生活</category>
         <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>导航</tag>
         <tag>分享</tag>
+        <tag>导航</tag>
       </tags>
   </entry>
   <entry>

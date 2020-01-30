@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>武汉加油，中国加油!</title>
+    <url>/2020/01/30/%E6%AD%A6%E6%B1%89%E5%8A%A0%E6%B2%B9%EF%BC%8C%E4%B8%AD%E5%9B%BD%E5%8A%A0%E6%B2%B9/</url>
+    <content><![CDATA[<center>向战斗在一线的所有医护人员致敬！！！</center>
+<img src="http://n.sinaimg.cn/spider2020129/534/w800h534/20200129/665e-intiarp0394348.jpg">
+<p style="font-size:13px; text-align: right;">图片来源网络</p>]]></content>
+      <tags>
+        <tag>分享</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LinkedList链表实现</title>
     <url>/2020/01/24/LinkedList%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0/</url>
     <content><![CDATA[<h2 id="链表与顺序表的异与同"><a href="#链表与顺序表的异与同" class="headerlink" title="链表与顺序表的异与同"></a>链表与顺序表的异与同</h2><p>由于链表所需的功能与顺序表基本相同,所以我采用继承、接口抽象类,模仿Java源代码的实现。</p>

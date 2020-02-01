@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Stack栈的实现</title>
+    <url>/2020/02/01/Stack%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<h2 id="栈模型（百度百科）"><a href="#栈模型（百度百科）" class="headerlink" title="栈模型（百度百科）"></a>栈模型（百度百科）</h2><img src="https://bkimg.cdn.bcebos.com/pic/8b82b9014a90f603eab7c55f3912b31bb051eda7?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2U4MA==,xp_5,yp_5" style="width: 40%">
+
+<h2 id="基本功能"><a href="#基本功能" class="headerlink" title="基本功能"></a>基本功能</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>; <span class="comment">// 元素的数量</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span>; <span class="comment">// 是否为空</span></span><br><span class="line"><span class="function">E <span class="title">top</span><span class="params">()</span></span>; <span class="comment">// 获取栈顶元素</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(E element)</span></span>; <span class="comment">// 入栈</span></span><br><span class="line"><span class="function">E <span class="title">pop</span><span class="params">()</span></span>; <span class="comment">// 出栈</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>; <span class="comment">//清空栈</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>由于栈的结构跟顺序表和链表很像，这里采用Java中的ArrayList实现栈的功能，实现过程非常简单。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StackDemo</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//不采用继承ArrayList的方法，因为ArrayList中有许多功能在栈中并不需要。</span></span><br><span class="line">	<span class="keyword">private</span> ArrayList&lt;E&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		list.clear();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> list.size();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> list.isEmpty();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(E element)</span> </span>&#123;</span><br><span class="line">		list.add(element);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> E <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> list.remove(list.size() - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> E <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> list.get(list.size() - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>分享</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>武汉加油，中国加油!</title>
     <url>/2020/01/30/%E6%AD%A6%E6%B1%89%E5%8A%A0%E6%B2%B9%EF%BC%8C%E4%B8%AD%E5%9B%BD%E5%8A%A0%E6%B2%B9/</url>
     <content><![CDATA[<center>向战斗在一线的所有医护人员致敬！！！</center>
@@ -99,26 +119,6 @@
       </categories>
       <tags>
         <tag>分享</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>双城记经典片段(测试用)</title>
-    <url>/2019/11/20/%E5%8F%8C%E5%9F%8E%E8%AE%B0%E7%BB%8F%E5%85%B8%E7%89%87%E6%AE%B5(%E6%B5%8B%E8%AF%95%E7%94%A8)/</url>
-    <content><![CDATA[<h2 id="经典欣赏"><a href="#经典欣赏" class="headerlink" title="经典欣赏"></a>经典欣赏</h2><p style="text-indent: 2em" >It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way--in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only.</p>  
-<p align="right">—— A Tale of Two Cities Charles Dickens</p> 
-<a id="more"></a>
-## 优秀译文
-
-<h3 id="中国对外翻译（宋兆霖-译文）"><a href="#中国对外翻译（宋兆霖-译文）" class="headerlink" title="中国对外翻译（宋兆霖 译文）"></a>中国对外翻译（宋兆霖 译文）</h3><p style="text-indent: 2em"> 那是最美好的时代，那是最糟糕的时代；那是个睿智的年月，那是个蒙昧的年月；那是信心百倍的时期，那是疑虑重重的时期；那是阳光普照的季节，那是黑暗笼罩的季节；那是充满希望的春天，那是让人绝望的冬天；我们面前无所不有，我们面前一无所有；我们大家都在直升天堂，我们大家都在直下地狱——简而言之，那个时代和当今这个时代是如此相似，因而一些吵嚷不休的权威们也坚持认为，不管它是好是坏，都只能用“ 最„„”来评价它。</p>
-
-<h3 id="人民文学（石永礼、赵文娟-译文）"><a href="#人民文学（石永礼、赵文娟-译文）" class="headerlink" title="人民文学（石永礼、赵文娟 译文）"></a>人民文学（石永礼、赵文娟 译文）</h3><p style="text-indent: 2em">那是最好的年月，那是最坏的年月，那是智慧的时代，那是愚蠢的时代，那是信仰的新纪元，那是怀疑的新纪元，那是光明的季节，那是黑暗的季节，那是希望的春天，那是绝望的冬天，我们将拥有一切，我们将一无所有，我们直接上天堂，我们直接下地狱——简言之，那个时代跟现代十分相似，甚至当年有些大发议论的权威人士都坚持认为，无论说那一时代好也罢，坏也罢，只有用最高比较级，才能接受。</p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>分享</tag>
-        <tag>导航</tag>
       </tags>
   </entry>
   <entry>

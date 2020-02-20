@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -42,26 +42,26 @@
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
     },
     sidebarPadding: 40
   };
 </script>
 
-  <meta name="description" content="栈模型（百度百科）  基本功能123456int size(); &#x2F;&#x2F; 元素的数量boolean isEmpty(); &#x2F;&#x2F; 是否为空E top(); &#x2F;&#x2F; 获取栈顶元素void push(E element); &#x2F;&#x2F; 入栈E pop(); &#x2F;&#x2F; 出栈void clear(); &#x2F;&#x2F;清空栈">
+  <meta name="description" content="栈模型（百度百科）栈（stack）又名堆栈，它是一种运算受限的线性表。限定仅在表尾进行插入和删除操作的线性表。这一端被称为栈顶，相对地，把另一端称为栈底。向一个栈插入新元素又称作进栈、入栈或压栈，它是把新元素放到栈顶元素的上面，使之成为新的栈顶元素；从一个栈删除元素又称作出栈或退栈，它是把栈顶元素删除掉，使其相邻的元素成为新的栈顶元素。">
 <meta name="keywords" content="分享">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Stack栈的实现">
 <meta property="og:url" content="https:&#x2F;&#x2F;lucasmaii.github.io&#x2F;2020&#x2F;02&#x2F;01&#x2F;Stack%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0&#x2F;index.html">
-<meta property="og:site_name" content="LucasMaii">
-<meta property="og:description" content="栈模型（百度百科）  基本功能123456int size(); &#x2F;&#x2F; 元素的数量boolean isEmpty(); &#x2F;&#x2F; 是否为空E top(); &#x2F;&#x2F; 获取栈顶元素void push(E element); &#x2F;&#x2F; 入栈E pop(); &#x2F;&#x2F; 出栈void clear(); &#x2F;&#x2F;清空栈">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https:&#x2F;&#x2F;bkimg.cdn.bcebos.com&#x2F;pic&#x2F;8b82b9014a90f603eab7c55f3912b31bb051eda7?x-bce-process=image&#x2F;watermark,g_7,image_d2F0ZXIvYmFpa2U4MA==,xp_5,yp_5">
-<meta property="og:updated_time" content="2020-02-01T07:13:38.232Z">
+<meta property="og:site_name" content="LucasMaii | Blog">
+<meta property="og:description" content="栈模型（百度百科）栈（stack）又名堆栈，它是一种运算受限的线性表。限定仅在表尾进行插入和删除操作的线性表。这一端被称为栈顶，相对地，把另一端称为栈底。向一个栈插入新元素又称作进栈、入栈或压栈，它是把新元素放到栈顶元素的上面，使之成为新的栈顶元素；从一个栈删除元素又称作出栈或退栈，它是把栈顶元素删除掉，使其相邻的元素成为新的栈顶元素。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;images.cnitblog.com&#x2F;blog&#x2F;477717&#x2F;201405&#x2F;062119435888582.jpg">
+<meta property="og:updated_time" content="2020-02-19T15:12:30.171Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;bkimg.cdn.bcebos.com&#x2F;pic&#x2F;8b82b9014a90f603eab7c55f3912b31bb051eda7?x-bce-process=image&#x2F;watermark,g_7,image_d2F0ZXIvYmFpa2U4MA==,xp_5,yp_5">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;images.cnitblog.com&#x2F;blog&#x2F;477717&#x2F;201405&#x2F;062119435888582.jpg">
 
 <link rel="canonical" href="https://lucasmaii.github.io/2020/02/01/Stack%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0/">
 
@@ -77,7 +77,7 @@
   };
 </script>
 
-  <title>Stack栈的实现 | LucasMaii</title>
+  <title>Stack栈的实现 | LucasMaii | Blog</title>
   
 
 
@@ -121,14 +121,14 @@
     <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">LucasMaii</span>
+        <span class="site-title">LucasMaii | Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
   </div>
 
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -142,22 +142,22 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
   </ul>
@@ -185,17 +185,17 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
     <link itemprop="mainEntityOfPage" href="https://LucasMaii.github.io/2020/02/01/Stack%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="LucasMaii">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="Be what you wanna be.">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LucasMaii">
+      <meta itemprop="name" content="LucasMaii | Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -207,29 +207,41 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2020-02-01 14:52:13 / 修改时间：15:13:38" itemprop="dateCreated datePublished" datetime="2020-02-01T14:52:13+08:00">2020-02-01</time>
+              <time title="Created: 2020-02-01 14:52:13" itemprop="dateCreated datePublished" datetime="2020-02-01T14:52:13+08:00">2020-02-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-19 23:12:30" itemprop="dateModified" datetime="2020-02-19T23:12:30+08:00">2020-02-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
                     <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
             </span>
 
           
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span id="busuanzi_value_page_pv"></span>
             </span>
 
@@ -242,15 +254,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="栈模型（百度百科）"><a href="#栈模型（百度百科）" class="headerlink" title="栈模型（百度百科）"></a>栈模型（百度百科）</h2><img src="https://bkimg.cdn.bcebos.com/pic/8b82b9014a90f603eab7c55f3912b31bb051eda7?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2U4MA==,xp_5,yp_5" style="width: 40%">
-
+        <h2 id="栈模型（百度百科）"><a href="#栈模型（百度百科）" class="headerlink" title="栈模型（百度百科）"></a>栈模型（百度百科）</h2><p>栈（stack）又名堆栈，它是一种运算受限的线性表。限定仅在表尾进行插入和删除操作的线性表。这一端被称为栈顶，相对地，把另一端称为栈底。向一个栈插入新元素又称作进栈、入栈或压栈，它是把新元素放到栈顶元素的上面，使之成为新的栈顶元素；从一个栈删除元素又称作出栈或退栈，它是把栈顶元素删除掉，使其相邻的元素成为新的栈顶元素。<br><img src="http://images.cnitblog.com/blog/477717/201405/062119435888582.jpg"></p>
+<a id="more"></a>
 <h2 id="基本功能"><a href="#基本功能" class="headerlink" title="基本功能"></a>基本功能</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>; <span class="comment">// 元素的数量</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span>; <span class="comment">// 是否为空</span></span><br><span class="line"><span class="function">E <span class="title">top</span><span class="params">()</span></span>; <span class="comment">// 获取栈顶元素</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(E element)</span></span>; <span class="comment">// 入栈</span></span><br><span class="line"><span class="function">E <span class="title">pop</span><span class="params">()</span></span>; <span class="comment">// 出栈</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>; <span class="comment">//清空栈</span></span><br></pre></td></tr></table></figure>
 
-<a id="more"></a>
+
 
 <h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>由于栈的结构跟顺序表和链表很像，这里采用Java中的ArrayList实现栈的功能，实现过程非常简单。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StackDemo</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//不采用继承ArrayList的方法，因为ArrayList中有许多功能在栈中并不需要。</span></span><br><span class="line">	<span class="keyword">private</span> ArrayList&lt;E&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		list.clear();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> list.size();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> list.isEmpty();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(E element)</span> </span>&#123;</span><br><span class="line">		list.add(element);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> E <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> list.remove(list.size() - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> E <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> list.get(list.size() - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StackDemo</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//不采用继承ArrayList的方法，因为ArrayList中有许多功能在栈中并不需要。</span></span><br><span class="line">	<span class="keyword">private</span> ArrayList&lt;E&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		list.clear();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> list.size();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> list.isEmpty();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(E element)</span> </span>&#123;</span><br><span class="line">		list.add(element);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> E <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> list.remove(list.size() - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> E <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> list.get(list.size() - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -307,10 +318,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
@@ -325,7 +336,7 @@
   <img class="site-author-image" itemprop="image" alt="LucasMaii"
     src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">LucasMaii</p>
-  <div class="site-description" itemprop="description"></div>
+  <div class="site-description" itemprop="description">Be what you wanna be.</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -333,20 +344,20 @@
           <a href="/archives/">
         
           <span class="site-state-item-count">8</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -378,10 +389,10 @@
 </div>
 
 <!--
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
   </div>-->
 
 <span id="busuanzi_container_site_uv">
@@ -443,5 +454,5 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":170,"height":340},"mobile":{"show":true},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":140,"height":280},"mobile":{"show":true},"log":false});</script></body>
 </html>
